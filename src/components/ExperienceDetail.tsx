@@ -13,8 +13,7 @@ import {
   ZoomIn,
   ZoomOut,
   ChevronLeft,
-  ChevronRight,
-  ArrowUpRight
+  ChevronRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getExperienceById } from '../data/experiences';

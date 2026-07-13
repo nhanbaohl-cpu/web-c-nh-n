@@ -191,13 +191,6 @@ INSTRUCTIONS FOR THE CONVERSATION:
     }
   });
 
-  // Force download for PDF files
-  app.get("/*.pdf", (req, res, next) => {
-    res.setHeader("Content-Disposition", `attachment; filename="${path.basename(req.path)}"`);
-    res.setHeader("Content-Type", "application/pdf");
-    next();
-  });
-
   // Serve static assets in production or use Vite middleware in development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
