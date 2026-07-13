@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Geist", "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: #FFFFFF;
+    color: #0F172A;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html.dark body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+  }
+
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.2);
+    color: #2563EB;
+  }
+  html.dark ::selection {
+    background-color: rgba(96, 165, 250, 0.2);
+    color: #60A5FA;
+  }
+}
+
+/* Custom classes for Apple-like glassmorphism and shadows */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.05)];
+  }
+  .dark .glass {
+    @apply bg-slate-900/70 border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.2)];
+  }
+  
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-lg border border-slate-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[20px] transition-all duration-500;
+  }
+  .dark .glass-card {
+    @apply bg-slate-900/60 border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.1)];
+  }
+  
+  .premium-shadow {
+    @apply shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)];
+  }
+  .dark .premium-shadow {
+    @apply shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)];
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
