@@ -82,10 +82,14 @@ export interface Translation {
     getInTouch: string;
     title: string;
     contactInfo: string;
+    downloadCV: string;
+    downloadPortfolio: string;
     phone: string;
     email: string;
     location: string;
     locationValue: string;
+    copiedPhone: string;
+    copiedEmail: string;
     socialProfiles: string;
     messageSent: string;
     thankYou: string;
