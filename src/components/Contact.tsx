@@ -3,6 +3,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, Linkedin, Github, Facebook, Ar
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../i18n/LanguageContext';
 
+import { getAssetUrl } from '../utils/asset';
+
 export default function Contact() {
   const { t } = useLanguage();
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
@@ -148,20 +150,20 @@ export default function Contact() {
               {/* Download Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-5 pb-0">
                 <a 
-                  href="/TranDinhBaoNhan_CV.pdf"
+                  href={getAssetUrl("/TranDinhBaoNhan_CV.pdf")}
                   download="TranDinhBaoNhan_CV.pdf"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:bg-white dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white hover:border-slate-900 dark:hover:border-white hover:-translate-y-[3px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] active:scale-[0.98] active:shadow-[0_2px_8px_rgba(0,0,0,0.1)] cursor-pointer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm transition-transform hover:scale-105 shadow-md cursor-pointer shrink-0"
                 >
-                  <Download className="w-[18px] h-[18px]" />
-                  {t.contact.downloadCV}
+                  <Download className="h-4 w-4" />
+                  <span>{t.contact.downloadCV}</span>
                 </a>
                 <a 
-                  href="/Portfolio_Tran_Dinh_Bao_Nhan.pdf"
+                  href={getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf")}
                   download="Portfolio_Tran_Dinh_Bao_Nhan.pdf"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:bg-white dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white hover:border-slate-900 dark:hover:border-white hover:-translate-y-[3px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] active:scale-[0.98] active:shadow-[0_2px_8px_rgba(0,0,0,0.1)] cursor-pointer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium text-sm transition-transform hover:scale-105 shadow-md cursor-pointer shrink-0"
                 >
-                  <Download className="w-[18px] h-[18px]" />
-                  {t.contact.downloadPortfolio}
+                  <Download className="h-4 w-4" />
+                  <span>{t.contact.downloadPortfolio}</span>
                 </a>
               </div>
             </div>

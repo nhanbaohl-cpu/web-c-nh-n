@@ -93,10 +93,10 @@ export default function Home({ setActiveTab }: HomeProps) {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={() => setActiveTab('portfolio')}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:bg-white dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white hover:border-slate-900 dark:hover:border-white hover:-translate-y-[3px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] active:scale-[0.98] active:shadow-[0_2px_8px_rgba(0,0,0,0.1)] cursor-pointer group"
+                className="group relative px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)] cursor-pointer overflow-hidden flex items-center justify-center gap-2"
               >
-                <span>{t.home.viewPortfolio}</span>
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10">{t.home.viewPortfolio}</span>
+                <ArrowRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform" />
               </button>
               
               <button
