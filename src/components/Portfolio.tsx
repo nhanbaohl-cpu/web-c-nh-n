@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Download, Maximize, X, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
-import { getAssetUrl } from '../utils/asset';
+import { getAssetUrl, downloadFile } from '../utils/asset';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Portfolio() {
@@ -72,6 +72,10 @@ export default function Portfolio() {
           <a
             href={getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf")}
             download="Portfolio_Tran_Dinh_Bao_Nhan.pdf"
+            onClick={(e) => {
+              e.preventDefault();
+              downloadFile(getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf"), "Portfolio_Tran_Dinh_Bao_Nhan.pdf");
+            }}
             className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] border border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:bg-white dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white hover:border-slate-900 dark:hover:border-white hover:-translate-y-[3px] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] active:scale-[0.98] active:shadow-[0_2px_8px_rgba(0,0,0,0.1)] cursor-pointer shrink-0"
           >
             <Download className="w-[18px] h-[18px]" />
@@ -135,7 +139,17 @@ export default function Portfolio() {
               <div className="flex items-center gap-4">
                 <button onClick={() => setScale(s => Math.min(s + 0.5, 3))} className="text-white/70 hover:text-white cursor-pointer"><ZoomIn className="h-6 w-6" /></button>
                 <button onClick={() => setScale(s => Math.max(s - 0.5, 0.5))} className="text-white/70 hover:text-white cursor-pointer"><ZoomOut className="h-6 w-6" /></button>
-                <a href={getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf")} download className="text-white/70 hover:text-white cursor-pointer"><Download className="h-6 w-6" /></a>
+                <a 
+                  href={getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf")} 
+                  download 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    downloadFile(getAssetUrl("/Portfolio_Tran_Dinh_Bao_Nhan.pdf"), "Portfolio_Tran_Dinh_Bao_Nhan.pdf");
+                  }}
+                  className="text-white/70 hover:text-white cursor-pointer"
+                >
+                  <Download className="h-6 w-6" />
+                </a>
                 <button onClick={() => { setLightboxOpen(false); setScale(1); }} className="text-white/70 hover:text-white cursor-pointer ml-4"><X className="h-8 w-8" /></button>
               </div>
             </div>

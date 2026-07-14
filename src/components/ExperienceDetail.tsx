@@ -18,7 +18,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { getExperienceById } from '../data/experiences';
 import { useLanguage } from '../i18n/LanguageContext';
-import { getAssetUrl } from '../utils/asset';
+import { getAssetUrl, downloadFile } from '../utils/asset';
 import ImageWithFallback from './ImageWithFallback';
 import ImagePlaceholder from './ImagePlaceholder';
 
@@ -260,7 +260,17 @@ export default function ExperienceDetail({ experienceId, onBack }: ExperienceDet
               <div className="flex items-center gap-3 bg-black/50 backdrop-blur-md p-2 rounded-full pointer-events-auto">
                 <button onClick={() => setScale(s => Math.min(s + 0.5, 3))} className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"><ZoomIn className="w-5 h-5" /></button>
                 <button onClick={() => setScale(s => Math.max(s - 0.5, 0.5))} className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"><ZoomOut className="w-5 h-5" /></button>
-                <a href={activeImage} download className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"><Download className="w-5 h-5" /></a>
+                <a 
+                  href={activeImage} 
+                  download 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    downloadFile(activeImage, activeImage.split('/').pop() || 'image.jpg');
+                  }}
+                  className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                >
+                  <Download className="w-5 h-5" />
+                </a>
                 <div className="w-px h-6 bg-white/20 mx-1" />
                 <button onClick={closeLightbox} className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"><X className="w-6 h-6" /></button>
               </div>

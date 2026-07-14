@@ -17,6 +17,24 @@ async function startServer() {
 
   app.use(express.json());
 
+  // API for downloading files securely
+  app.get("/api/download", (req, res) => {
+    const file = req.query.file as string;
+    if (!file) {
+      return res.status(400).send("File is required");
+    }
+    
+    // Prevent directory traversal
+    const safePath = path.normalize(file).replace(/^(\.\.(\/|\\|$))+/, '');
+    const filePath = path.join(process.cwd(), "public", safePath);
+    
+    if (fs.existsSync(filePath)) {
+      res.download(filePath, safePath);
+    } else {
+      res.status(404).send("File not found");
+    }
+  });
+
   // API to get project images
   app.get("/api/projects/:projectId/images", (req, res) => {
     const { projectId } = req.params;
